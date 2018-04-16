@@ -6,25 +6,32 @@ public class Test{
 
 	//metodo test 
 	public void Test(){
-	Rental renta = new Rental();
-	Random rn = new Random();
-    double valor_esperado;
+	Rental renta = new Rental(); // creacion de objeto rental
+	Random rn = new Random(); // creacion de objeto random el cual se encarga de generar valores aleatorios para las pruebas 
+    double valor_esperado; // valor esperado  o referencia de comparacion con el valor generado por calse renta 
+   int con_aciertos=0; //contador de aciertos entre valor esperado y el valor generado 
+   int con_fallos=0;//contador de falla  entre valor esperado y el valor generado
    
-   
-	for(int i =0; i < 100; i++)
+	for(int i =0; i < 100; i++) // ciclo desde hasta de 100 repeticiones para calcular 100 distintos alquileres y comparar con los valores esperados 
 	{
-   	    int opcion = rn.nextInt(3) + 0;
-   	    int cantidad_bicycle = rn.nextInt(10) + 1;
-        double  valor_de_pago = 1.0 + ( 10.0 - 1.0 ) * rn.nextDouble();
-         renta.setopcion(opcion);
-    renta.setcantidad_bicycle(cantidad_bicycle);
-    renta.setvalor_de_pago(valor_de_pago);
-    renta.Calcular_precio();
-   	    valor_esperado=CalcularValorEsperado(opcion,valor_de_pago,cantidad_bicycle);
-        double valor_pago=renta.gettotal_a_pagar();
-    	 System.out.println(valor_esperado+"---"+valor_pago);
-	}
-
+   	    int opcion = rn.nextInt(3) + 0; // variable opcion encargada de saber si es hora, dia, semana se carga automaticamente con la funcion de randon
+   	    int cantidad_bicycle = rn.nextInt(10) + 1;// variable cantidad_bicycle encargada de saber la cantida de bicicletas alquiladas se carga automaticamente con la funcion de randon
+        double  valor_de_pago = 1.0 + ( 10.0 - 1.0 ) * rn.nextDouble(); // variable  valor_de_pago encargada de saber la cantidad de  hora, dia, semana de alquiler  se carga automaticamente con la funcion de randon
+        renta.setopcion(opcion); //se envia el valor generado aleatoriamente al metodo de renta para cargar opcion 
+        renta.setcantidad_bicycle(cantidad_bicycle); //se envia el valor generado aleatoriamente al metodo de renta para cargar cantidad_bicycle
+        renta.setvalor_de_pago(valor_de_pago); //se envia el valor generado aleatoriamente al metodo de renta para cargar valor_de_pago
+        renta.Calcular_precio();//se calcula el precio de la renta en la clase rental
+   	    valor_esperado=CalcularValorEsperado(opcion,valor_de_pago,cantidad_bicycle);//se envia al metodo CalcularValorEsperado()->opcion,valor_de_pago,cantidad_bicycle para generar un valor esperado para compara todo esto en la clase test 
+        double valor_pago=renta.gettotal_a_pagar();// solicito a la clase rental el valor generado de valor de pago para comparar posteriormente con un valor esperado de la clase test 
+        if (valor_pago==valor_esperado) {// condicion para comparar entre valor real con valor esperado
+        	 System.out.println("valor esperado->"+valor_esperado+"    valor genreado->"+valor_pago);//impresion de los dos valores 
+             con_aciertos++;//cantidad de aciertos 
+	    }else{
+	    	con_fallos++;//cantidad de fallas
+	    }
+       }
+    	
+System.out.println("porcentaje de aciertos:"+con_aciertos+"% y fallos:"+con_fallos+"%");// impresion de porcentaje de acierto y fallos 
 
 
 
