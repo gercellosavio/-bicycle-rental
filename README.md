@@ -11,4 +11,6 @@ Con la creación del método <B>public void Calcular_precio(){}</B>  que ayuda a
 
 <B>Configuración y uso</B><br/>
 Descargas el conjunto de clases y con simplemente MS-DOS o una herramienta para compilar dichas clases  puedes ejecutar el archivo package.java el cual ejecutara el método Test() que es el encargado de realizar las pruebas automatizadas a las demás clases generando un conjunto de valores que serán evaluados dentro de ella y proporcionara un porcentaje de cobertura sobre las pruebas.
-NOTA: Los valores ingresados al método test() son generados aleatoriamente por el sistema.
+</br>NOTA: Los valores ingresados al método test() son generados aleatoriamente por el sistema.</br>
+NOTA:este codigo funciona con datos puntuales si desea un codigo mucho mas conplejo dejar su comentario y sujerencias para las procimas verciones.
+
